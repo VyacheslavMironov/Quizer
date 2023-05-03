@@ -1,5 +1,6 @@
 <template>
     <header>
+      {{  this.is_user }}
     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -17,8 +18,9 @@
             </li>
             <li class="nav-item">
               <router-link 
-                v-if="is_user"
+                v-if="this.is_user"
                 class="nav-link btn btn-primary text-light" 
+                to="#"
               >Выход</router-link>
               <router-link 
                 v-else
@@ -38,18 +40,10 @@ export default {
   data()
   {
     return {
-      is_user: false
+      is_user: localStorage.getItem('isAuth')
     }
   },
   methods: {
-    getUser: function()
-    {
-      this.is_user = localStorage.getItem('userEmail') != null ? true : false
-    }
-  },
-  mounted()
-  {
-    this.getUser
   }
 }
 </script>

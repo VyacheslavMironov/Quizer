@@ -40,6 +40,7 @@
                 {
                     if (this.password == this.user.password)
                     {
+                        localStorage.setItem("isAuth", true)
                         localStorage.setItem("userName", this.user.name)
                         localStorage.setItem("userSurName", this.user.surname)
                         localStorage.setItem("userEmail", this.user.email)
