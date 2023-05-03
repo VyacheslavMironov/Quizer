@@ -18,12 +18,13 @@
             </li>
             <li class="nav-item">
               <router-link 
-                v-if="this.is_user"
+                v-if="this.is_user == 'true'"
                 class="nav-link btn btn-primary text-light" 
                 to="#"
+                v-on:click="logout"
               >Выход</router-link>
               <router-link 
-                v-else
+                v-if="this.is_user == 'false'"
                 class="nav-link btn btn-primary text-light" 
                 to="/login"
               >Вход</router-link>
@@ -44,6 +45,15 @@ export default {
     }
   },
   methods: {
+    logout: function()
+    {
+      localStorage.setItem("isAuth", false)
+      localStorage.removeItem("userName")
+      localStorage.removeItem("userSurName")
+      localStorage.removeItem("userEmail")
+      localStorage.removeItem("userAge")
+      return location.href = "/"
+    }
   }
 }
 </script>
